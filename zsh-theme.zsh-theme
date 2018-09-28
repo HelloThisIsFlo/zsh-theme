@@ -26,7 +26,7 @@ fi
 # Python - Pipenv
 local pipenv_python=''
 if which pipenv &> /dev/null; then
-    if [ "$PIPENV_ACTIVE" == 1 ]; then
+    if [ "$PIPENV_ACTIVE" = 1 ]; then
         local venv="$(echo $VIRTUAL_ENV | sed 's/.*\///' | sed 's/-.*//')"
         pipenv_python="%{$fg[magenta]%}‹Pipenv: $venv›%{$reset_color%}"
     fi
