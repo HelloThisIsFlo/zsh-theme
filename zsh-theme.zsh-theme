@@ -32,13 +32,16 @@ if which pipenv &> /dev/null; then
     fi
 fi
 
+# AWS Cli
+aws_active_profile="☁️  %{$fg[cyan]%}$AWS_PROFILE%{$reset_color%}"
 
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 
 PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}"
+PROMPT="$PROMPT
+│ $aws_active_profile"
 if [ "$pipenv_python" != "" ]; then
-    PROMPT="$PROMPT
-│ ${pipenv_python}"
+    PROMPT="$PROMPT ${pipenv_python}"
 fi
 PROMPT="$PROMPT
 ╰─%B${user_symbol}%b "
