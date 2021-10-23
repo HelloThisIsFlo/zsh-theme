@@ -35,16 +35,9 @@ fi
 # AWS Cli
 aws_active_profile="☁️  %{$fg[cyan]%}$AWS_PROFILE%{$reset_color%}"
 
-function git_info {
-    CODURANCE_EMR_PROJECT='emr'
-    if [[ $PWD =~ $CODURANCE_EMR_PROJECT ]]; then
-        echo "%{[33m%}‹Skipped: EMR>%{[00m%}"
-    else
-        printf '$(git_prompt_info)'
-    fi
-}
+local git_branch='$(git_prompt_info)%{$reset_color%}'
 
-PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} $(git_info)"
+PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}"
 PROMPT="$PROMPT
 │ $aws_active_profile"
 if [ "$pipenv_python" != "" ]; then
